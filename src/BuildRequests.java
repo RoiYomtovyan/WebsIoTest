@@ -1,4 +1,4 @@
-import org.json.JSONObject;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class BuildRequests {
 
     static JSONObject config = (JSONObject) file;
 
-    public HttpRequest request(String api , String query) throws URISyntaxException {
+    public HttpRequest request(String api , String query ,String parameters) throws URISyntaxException {
         String apiType = null;
         switch (api) {
             case "filterWebContent":
@@ -37,7 +37,7 @@ public class BuildRequests {
 
         }
          HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(config.get("baseUrl").toString() + apiType + "?q=" +query+ "&" + config.get("token").toString()))
+                .uri(new URI(config.get("baseUrl").toString()+apiType +"?q="+query+parameters+"&token="+config.get("token").toString()))
                 .GET()
                 .build();
          return request;
