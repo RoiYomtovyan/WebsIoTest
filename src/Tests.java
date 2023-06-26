@@ -88,10 +88,10 @@ public class Tests {
         String encodedQuery = URLEncoder.encode(query, StandardCharsets.UTF_8);
         org.json.JSONObject request_verify_requestsLeft_number1 = requestToSend.sendRequest(api,encodedQuery,parameters);
         int requestsLeft = (int) request_verify_requestsLeft_number1.get("requestsLeft");
-        System.out.println("TrequestsLeft: " + requestsLeft);
+        System.out.println("requestsLeft: " + requestsLeft);
         org.json.JSONObject request_verify_requestsLeft_number2 = requestToSend.sendRequest(api,encodedQuery,parameters);
         int requestsLeftUpdated = (int) request_verify_requestsLeft_number2.get("requestsLeft");
-        System.out.println("TrequestsLeftUpdated: " + requestsLeftUpdated);
+        System.out.println("requestsLeftUpdated: " + requestsLeftUpdated);
         assert requestsLeft - requestsLeftUpdated == 1;
 
         }
